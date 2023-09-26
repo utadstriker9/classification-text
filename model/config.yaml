@@ -1,0 +1,30 @@
+# Path related
+raw_dataset_path: \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\data_source\all_cat.xlsx
+data_set_path: \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\data.json
+raw_new_dataset_path: \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\data_source\all_cat_new.xlsx
+data_clean_path: \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\data_clean.json
+train_set_path:
+- \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\X_train.pkl
+- \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\y_train.pkl
+test_set_path:
+- \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\X_test.pkl
+- \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\y_test.pkl
+tfidf_vectorizer_path: \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\tfidf_vectorizer.pkl
+label_encoder_path: \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\label_encoder.pkl
+
+# Preprocessing related
+index_column: 'Unnamed: 0'
+output_column: sentimen
+text_column: content
+token_column: tokenize
+output_column: category
+
+# Modeling related
+best_model_path: \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\best_model.pkl
+list_of_model_path: \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\list_of_model.pkl
+list_of_param_path: \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\list_of_param.pkl
+list_of_tuned_model_path: \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\list_of_tuned_model.pkl
+best_threshold_path: \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\best_threshold.pkl
+test_size: 0.2
+seed: 42
+bm_record: \Users\taqiy\OneDrive\Dokumen\AI\Aegis\klasifikasi_laporan\model\output\best_model.json

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ML Model Predictor</title>
+</head>
+<body>
+    <h1>ML Model Predictor</h1>
+    
+    <form>
+        <label for="text">Input Text:</label><br>
+        <textarea id="text" name="text" rows="4" cols="50"></textarea><br><br>
+        <input type="button" value="Predict" onclick="predict()">
+    </form>
+    
+    <p id="prediction-result"></p>
+    <p id="prediction-error"></p>
+
+    <script>
+        async function predict() {
+            try {
+                const text = document.getElementById("text").value;
+
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ 'text': text })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Fetch error: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+
+                // Access the class_probabilities array
+                const classProbabilities = result.class_probabilities[0];
+
+                // Sort class probabilities in descending order
+                classProbabilities.sort((a, b) => b.probability - a.probability);
+
+                // Create a string to display class labels and probabilities as percentages
+                let predictionText = "Predicted Classes and Probabilities:\n";
+                let rank = 1;
+                for (const classProbability of classProbabilities) {
+                    const classLabel = classProbability.label;
+                    const probabilityPercentage = (classProbability.probability * 100).toFixed(2);
+                    predictionText += `${rank}. ${classLabel}: ${probabilityPercentage}%\n`;
+                    rank++;
+                }
+
+                // Display the prediction result
+                const predictionResultElement = document.getElementById("prediction-result");
+                predictionResultElement.textContent = predictionText;
+
+                // Clear error message
+                const predictionErrorElement = document.getElementById("prediction-error");
+                predictionErrorElement.textContent = "";
+
+            } catch (error) {
+                console.error(error);
+                document.getElementById("prediction-result").textContent = "";
+                document.getElementById("prediction-error").textContent = "Error: " + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
